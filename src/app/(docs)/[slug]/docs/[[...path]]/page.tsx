@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import path from "node:path";
+import { Breadcrumbs, type Crumb } from "@/components/breadcrumbs";
 import { Markdown } from "@/components/markdown";
 import { PrevNext } from "@/components/prev-next";
 import { TableOfContents } from "@/components/toc";
@@ -77,7 +78,15 @@ export default async function DocPage({ params }: Props) {
   if (!doc) {
     // Project has no docs index file: render a generated top-level listing.
     return (
-      <div className="mx-auto w-full max-w-3xl px-6 py-10" data-pagefind-body>
+      <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6" data-pagefind-body>
+        <span hidden data-pagefind-meta={`url:/${slug}/docs`} />
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: project.name, href: `/${slug}` },
+            { label: "Docs", current: true },
+          ]}
+        />
         <h1 className="text-3xl font-semibold tracking-tight">
           {project.name} documentation
         </h1>
@@ -144,33 +153,33 @@ export default async function DocPage({ params }: Props) {
     ? `${project.repoUrl}/edit/${repoMeta.branch}/docs/${doc.fileRelPath.split(path.sep).join("/")}`
     : null;
 
+  const breadcrumbItems: Crumb[] = [
+    { label: "Home", href: "/" },
+    { label: project.name, href: `/${slug}` },
+    docPath.length === 0
+      ? { label: "Docs", current: true }
+      : { label: "Docs", href: `/${slug}/docs` },
+    ...crumbs.map((crumb) => ({
+      label: crumb.label,
+      href: crumb.href ?? undefined,
+      current: crumb.isCurrent,
+    })),
+  ];
+
   return (
-    <div className="mx-auto flex w-full max-w-6xl gap-10 px-6 py-10">
+    <div className="mx-auto flex w-full max-w-6xl gap-10 px-4 py-10 sm:px-6">
       <div className="max-w-3xl min-w-0 flex-1">
-        <p data-pagefind-ignore className="text-sm text-muted">
-          <Link href={`/${slug}/docs`} className="hover:underline">
-            {project.name}
-          </Link>
-          {crumbs.map((crumb) => (
-            <span key={crumb.label}>
-              {" / "}
-              {crumb.href && !crumb.isCurrent ? (
-                <Link href={crumb.href} className="hover:underline">
-                  {crumb.label}
-                </Link>
-              ) : (
-                <span className={crumb.isCurrent ? "text-foreground" : ""}>
-                  {crumb.label}
-                </span>
-              )}
-            </span>
-          ))}
-        </p>
+        <Breadcrumbs items={breadcrumbItems} />
         <article
           data-pagefind-body
           data-pagefind-meta={`title:${doc.title} · ${project.name}`}
-          className="mt-6"
         >
+          {/* Pagefind derives URLs from .html file paths, which Next serves
+              extensionless — override with the canonical route. */}
+          <span
+            hidden
+            data-pagefind-meta={`url:/${slug}/docs${docPath.length ? `/${docPath.join("/")}` : ""}`}
+          />
           <Markdown content={doc.markdown} baseSegments={baseSegments} />
         </article>
         <div data-pagefind-ignore>

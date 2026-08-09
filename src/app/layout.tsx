@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
-import "react-device-lab/styles.css";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -13,6 +12,13 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // Extend into device inset zones; .safe-* helpers keep content clear.
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: {

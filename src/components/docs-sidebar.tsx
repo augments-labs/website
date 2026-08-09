@@ -32,7 +32,7 @@ function SidebarItem({
   node: SidebarNode;
   slug: string;
   pathname: string;
-  onNavigate?: () => void;
+  onNavigate?: (href: string) => void;
   depth: number;
 }) {
   const [expanded, setExpanded] = useState(() =>
@@ -48,7 +48,12 @@ function SidebarItem({
         {href ? (
           <Link
             href={href}
-            onClick={onNavigate}
+            onClick={(e) => {
+              // Modifier clicks (new tab etc.) keep native link behaviour.
+              if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+              e.preventDefault();
+              onNavigate?.(href);
+            }}
             aria-current={isActive ? "page" : undefined}
             className={`min-w-0 flex-1 truncate rounded-md px-2 py-1.5 text-sm transition-colors ${
               isActive
@@ -107,12 +112,16 @@ export function DocsSidebar({
   slug,
   open,
   onClose,
+  onNavigate,
 }: {
   tree: SidebarNode[];
   slug: string;
   /** Mobile drawer state. */
   open: boolean;
+  /** X button / backdrop: dismiss the drawer. */
   onClose: () => void;
+  /** Item clicks: navigate, dismissing the drawer first if it is open. */
+  onNavigate?: (href: string) => void;
 }) {
   const pathname = usePathname();
 
@@ -125,7 +134,7 @@ export function DocsSidebar({
             node={node}
             slug={slug}
             pathname={pathname}
-            onNavigate={onClose}
+            onNavigate={onNavigate}
             depth={0}
           />
         ))}
@@ -147,14 +156,14 @@ export function DocsSidebar({
             onClick={onClose}
             aria-hidden
           />
-          <div className="absolute inset-y-0 left-0 w-72 overflow-y-auto border-r border-border bg-background">
+          <div className="safe-top safe-bottom absolute inset-y-0 left-0 w-72 overflow-y-auto border-r border-border bg-background">
             <div className="flex items-center justify-between border-b border-border px-3 py-3">
               <span className="px-2 text-sm font-semibold">Documentation</span>
               <button
                 type="button"
                 onClick={onClose}
                 aria-label="Close docs navigation"
-                className="rounded-md p-1.5 text-muted hover:text-foreground"
+                className="rounded-md p-3 text-muted hover:text-foreground"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden>
                   <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />

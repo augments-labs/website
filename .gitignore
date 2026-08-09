@@ -51,3 +51,6 @@ public/pagefind/
 
 # sync temp dirs (scripts/sync-docs.mjs)
 public/.synced-tmp/
+
+# local SDLC skill artifacts (designs, plans)
+.sdlc-skills/

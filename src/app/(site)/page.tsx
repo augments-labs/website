@@ -26,8 +26,8 @@ const principles = [
 
 export default function Home() {
   return (
-    <div className="mx-auto w-full max-w-5xl px-6">
-      <section className="py-20 sm:py-28">
+    <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
+      <section className="pt-20 pb-16 sm:pt-28">
         <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
           Practical augments for human capability.
         </h1>

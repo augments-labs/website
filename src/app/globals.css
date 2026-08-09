@@ -3,13 +3,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* V1 "Instrument" — dark default, teal reserved for action/active/focus,
-   hairline borders. Accent pair comes from the Augments Labs logo. */
+   hairline borders. Neutrals are zinc in both themes (light = zinc
+   counterparts of dark); accent pair comes from the Augments Labs logo. */
 :root {
   --background: #ffffff;
-  --foreground: #172033;
-  --muted: #55606f;
-  --surface: #f4f7f7;
-  --border: #dfe6e6;
+  --foreground: #172033; /* brand ink ≈ zinc-900 */
+  --muted: #52525b; /* zinc-600 */
+  --surface: #f4f4f5; /* zinc-100 */
+  --border: #e4e4e7; /* zinc-200 */
   --accent: #008c82;
   --accent-foreground: #ffffff;
 }
@@ -39,6 +40,40 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  /* Home-indicator zone (viewport-fit=cover): last content clears it. */
+  padding-bottom: var(--rdl-safe-area-inset-bottom, env(safe-area-inset-bottom));
+}
+
+/* Safe-area helpers. Bars span the inset zones with their background
+   (.safe-top on the bar itself) while content stays clear (.safe-x on
+   the inner container). Two sources: --rdl-safe-area-inset-* is injected
+   by react-device-lab into the previewed document; env() covers real
+   devices. Both are 0 where no insets exist. */
+.safe-top {
+  padding-top: var(--rdl-safe-area-inset-top, env(safe-area-inset-top));
+}
+.safe-bottom {
+  padding-bottom: var(--rdl-safe-area-inset-bottom, env(safe-area-inset-bottom));
+}
+.safe-x {
+  padding-left: max(1rem, var(--rdl-safe-area-inset-left, env(safe-area-inset-left)));
+  padding-right: max(1rem, var(--rdl-safe-area-inset-right, env(safe-area-inset-right)));
+}
+@media (min-width: 640px) {
+  .safe-x {
+    padding-left: max(1.5rem, var(--rdl-safe-area-inset-left, env(safe-area-inset-left)));
+    padding-right: max(1.5rem, var(--rdl-safe-area-inset-right, env(safe-area-inset-right)));
+  }
+}
+
+/* Responsive prose: break long unbreakable strings; scroll wide tables. */
+.prose {
+  overflow-wrap: break-word;
+}
+.prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 /* Docs prose — accent links, surfaced code blocks, quiet autolink headings */

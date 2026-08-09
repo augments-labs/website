@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CodeBlock } from "@/components/code-block";
 import { getProject, projects } from "@/lib/projects";
 
@@ -27,7 +28,11 @@ export default async function ProjectWelcomePage({ params }: Props) {
   if (!project) notFound();
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-16 sm:py-20">
+    <div className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
+      <span hidden data-pagefind-meta={`url:/${slug}`} />
+      <Breadcrumbs
+        items={[{ label: "Home", href: "/" }, { label: project.name, current: true }]}
+      />
       <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted">
         {project.language}
       </span>

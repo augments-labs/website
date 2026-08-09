@@ -19,6 +19,9 @@ Static Next.js (App Router) + Tailwind v4 site, deployed on Vercel.
   the source repo's `docs/` folder instead.
 - Project card/welcome-page data: `src/lib/projects.json`.
 - Docs logic unit tests live next to it: `src/lib/*.test.ts` (vitest).
-- Design of record for the UI: `.sdlc-skills/designs/2026-08-08-augmentslabs-redesign.md`.
+- Design of record for the UI: `.sdlc-skills/designs/2026-08-08-augmentslabs-redesign.md`,
+  revised by the `2026-08-09-site-chrome-polish*.md` series (latest v4:
+  header, theme toggle, light tokens, footer removal, safe area, touch
+  targets, breadcrumbs, native back).
 - `CLAUDE.md` is a symlink to this file; keep them in sync by editing only
   `AGENTS.md`.
