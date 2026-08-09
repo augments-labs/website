@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# augmentslabs.com
 
-## Getting Started
+The Augments Labs website. Minimal static site built with Next.js (App
+Router) and Tailwind CSS, deployed on Vercel.
 
-First, run the development server:
+## How it works
+
+- The homepage and layout live in `src/app/` — copy is edited directly there.
+- Project cards are driven by `src/lib/projects.json` (one entry per public
+  repo in the `augments-labs` org). Adding a project = adding one JSON entry.
+- **Documentation is synced, not written here.** Each project keeps its docs
+  in its own repo under `docs/`. `scripts/sync-docs.mjs` pulls every
+  `docs/**/*.md` file into `content/docs/<slug>/` before `next dev` and
+  `next build` (npm pre-hooks, so it also runs on Vercel). `content/` is
+  gitignored and regenerated on every run — never edit it by hand.
+- Synced markdown is rendered at `/docs/<slug>/<page>` by
+  `src/app/docs/[slug]/[[...path]]/page.tsx`. Relative links between markdown
+  files (e.g. `[Sessions](sessions.md)`) are rewritten to site URLs.
+- Doc updates in a project repo go live on the next website deploy. To make
+  that automatic, add a Vercel deploy hook and call it from the project
+  repo's CI on pushes to `main`.
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev   # syncs docs first, then starts Next
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you hit GitHub API rate limits during sync (60 req/h unauthenticated),
+set `GITHUB_TOKEN` in the environment.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Import the repo into Vercel — no configuration needed, the build command is
+the standard `next build`. The custom domain `augmentslabs.com` is attached
+in the Vercel project settings.

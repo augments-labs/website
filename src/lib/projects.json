@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "crucible-code",
+    "name": "Crucible Code",
+    "tagline": "The harness where agents are forged.",
+    "language": "Rust",
+    "repoUrl": "https://github.com/augments-labs/crucible-code"
+  },
+  {
+    "slug": "philharmonica-adk-python",
+    "name": "Philharmonica ADK",
+    "tagline": "A framework to orchestrate a complex system of agents that performs real-world actions.",
+    "language": "Python",
+    "repoUrl": "https://github.com/augments-labs/philharmonica-adk-python"
+  },
+  {
+    "slug": "sdlc-skills",
+    "name": "SDLC Skills",
+    "tagline": "Rigorous, phase-isolated SDLC skills that tether autonomous agents to real-world engineering standards.",
+    "language": "Shell",
+    "repoUrl": "https://github.com/augments-labs/sdlc-skills"
+  }
+]
