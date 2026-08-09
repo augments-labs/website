@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import { DocsSearch } from "@/components/docs-search";
 import { DocsSidebar, type SidebarNode } from "@/components/docs-sidebar";
+import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import type { Project } from "@/lib/projects";
 
@@ -39,6 +40,9 @@ export function DocsShell({
               <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" />
             </svg>
           </button>
+          <Link href="/" aria-label="Augments Labs home" className="shrink-0">
+            <Logo className="h-9" />
+          </Link>
           <Link
             href={`/${project.slug}`}
             className="truncate font-semibold hover:text-accent"

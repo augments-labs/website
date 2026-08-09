@@ -24,28 +24,11 @@ const principles = [
   },
 ];
 
-function Wordmark() {
-  return (
-    <picture>
-      <source
-        media="(prefers-color-scheme: dark)"
-        srcSet="/augments-labs-logo-light.svg"
-      />
-      <img
-        src="/augments-labs-logo-dark.svg"
-        alt="Augments Labs"
-        className="h-16 w-auto sm:h-20"
-      />
-    </picture>
-  );
-}
-
 export default function Home() {
   return (
     <div className="mx-auto w-full max-w-5xl px-6">
       <section className="py-20 sm:py-28">
-        <Wordmark />
-        <h1 className="mt-8 max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
           Practical augments for human capability.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
@@ -58,14 +41,6 @@ export default function Home() {
         <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">
           Augments Labs is where we design and build those tools.
         </p>
-        <div className="mt-8">
-          <Link
-            href="#projects"
-            className="inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
-          >
-            View the projects
-          </Link>
-        </div>
       </section>
 
       <section id="projects" className="scroll-mt-20 border-t border-border py-16">
@@ -75,7 +50,7 @@ export default function Home() {
             <Link
               key={project.slug}
               href={`/${project.slug}`}
-              className="group augment-corner-hover flex flex-col rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent"
+              className="group flex flex-col rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent"
             >
               <div className="flex items-center justify-between gap-2">
                 <h3 className="font-semibold group-hover:text-accent">

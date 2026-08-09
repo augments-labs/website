@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Augments Labs">
+  <!-- The open A from the wordmark; the teal corner is the augment. -->
+  <style>
+    .ink { stroke: #172033; }
+    .accent { stroke: #008C82; }
+    @media (prefers-color-scheme: dark) {
+      .ink { stroke: #F2F8F7; }
+      .accent { stroke: #5ED2C4; }
+    }
+  </style>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path class="ink" d="M28 174 98 46l70 128" stroke-width="22"/>
+    <path class="ink" d="M60 126h76" stroke-width="18"/>
+    <path class="accent" d="M145 48h31v31" stroke-width="14"/>
+  </g>
+</svg>

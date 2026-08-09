@@ -52,7 +52,7 @@ function SidebarItem({
             aria-current={isActive ? "page" : undefined}
             className={`min-w-0 flex-1 truncate rounded-md px-2 py-1.5 text-sm transition-colors ${
               isActive
-                ? "augment-corner bg-surface font-medium text-accent"
+                ? "bg-surface font-medium text-accent"
                 : "text-muted hover:text-foreground"
             }`}
           >

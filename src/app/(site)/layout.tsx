@@ -1,21 +1,6 @@
 import Link from "next/link";
+import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
-
-function Logo() {
-  return (
-    <picture>
-      <source
-        media="(prefers-color-scheme: dark)"
-        srcSet="/augments-labs-logo-light.svg"
-      />
-      <img
-        src="/augments-labs-logo-dark.svg"
-        alt="Augments Labs"
-        className="h-9 w-auto"
-      />
-    </picture>
-  );
-}
 
 export default function SiteLayout({ children }: LayoutProps<"/">) {
   return (
@@ -26,7 +11,7 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
       >
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-3">
           <Link href="/" aria-label="Augments Labs home">
-            <Logo />
+            <Logo className="h-14" />
           </Link>
           <nav className="flex items-center gap-6 text-sm font-medium text-muted">
             <Link href="/#projects" className="hover:text-foreground">

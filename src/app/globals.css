@@ -41,33 +41,6 @@ body {
   color: var(--foreground);
 }
 
-/* The "augment corner" — the design signature, lifted from the logo's teal
-   corner element. Used sparingly: active sidebar items, card hover. */
-.augment-corner,
-.augment-corner-hover {
-  position: relative;
-}
-.augment-corner::after,
-.augment-corner-hover::after {
-  content: "";
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid var(--accent);
-  border-right: 2px solid var(--accent);
-  border-top-right-radius: 2px;
-  pointer-events: none;
-}
-.augment-corner-hover::after {
-  opacity: 0;
-  transition: opacity 120ms ease-in-out;
-}
-.augment-corner-hover:hover::after {
-  opacity: 1;
-}
-
 /* Docs prose — accent links, surfaced code blocks, quiet autolink headings */
 .prose a {
   color: var(--accent);
