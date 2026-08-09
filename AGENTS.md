@@ -7,3 +7,18 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Project: augmentslabs.com website
+
+Static Next.js (App Router) + Tailwind v4 site, deployed on Vercel.
+
+- Commands: `npm run dev` (syncs docs first), `npm test` (vitest),
+  `npm run lint`, `npm run build` (docs sync + next build + pagefind index).
+- Docs content is SYNCED from the project repos by `scripts/sync-docs.mjs`
+  into `content/` and `public/synced/` — never edit generated output; edit
+  the source repo's `docs/` folder instead.
+- Project card/welcome-page data: `src/lib/projects.json`.
+- Docs logic unit tests live next to it: `src/lib/*.test.ts` (vitest).
+- Design of record for the UI: `.sdlc-skills/designs/2026-08-08-augmentslabs-redesign.md`.
+- `CLAUDE.md` is a symlink to this file; keep them in sync by editing only
+  `AGENTS.md`.

@@ -4,20 +4,49 @@
     "name": "Crucible Code",
     "tagline": "The harness where agents are forged.",
     "language": "Rust",
-    "repoUrl": "https://github.com/augments-labs/crucible-code"
+    "repoUrl": "https://github.com/augments-labs/crucible-code",
+    "quickstart": {
+      "label": "Build from source — Linux x86-64, glibc 2.34+",
+      "code": "git clone https://github.com/augments-labs/crucible-code\ncd crucible-code\ncargo build --release\n./target/release/crucible --version"
+    },
+    "highlights": [
+      "A terminal coding agent: it reads, searches, edits and runs things in the directory you start it in",
+      "Asks before anything that changes a file or starts a process",
+      "A single dynamically-linked binary — no runtime, no certificate bundle, nothing else to install",
+      "Provider keys are read from the environment and never stored"
+    ]
   },
   {
     "slug": "philharmonica-adk-python",
     "name": "Philharmonica ADK",
     "tagline": "A framework to orchestrate a complex system of agents that performs real-world actions.",
     "language": "Python",
-    "repoUrl": "https://github.com/augments-labs/philharmonica-adk-python"
+    "repoUrl": "https://github.com/augments-labs/philharmonica-adk-python",
+    "quickstart": {
+      "label": "Install with uv — or plain pip",
+      "code": "uv add philharmonica-adk  # or: pip install philharmonica-adk"
+    },
+    "highlights": [
+      "Orchestrate complex systems of agents that perform real-world actions",
+      "Graphs, handoffs and swarms with checkpointing, streaming and cancellation",
+      "Guardrails, permissions and governance built into the runtime",
+      "Observability and tracing from the very first run"
+    ]
   },
   {
     "slug": "sdlc-skills",
     "name": "SDLC Skills",
     "tagline": "Rigorous, phase-isolated SDLC skills that tether autonomous agents to real-world engineering standards.",
     "language": "Shell",
-    "repoUrl": "https://github.com/augments-labs/sdlc-skills"
+    "repoUrl": "https://github.com/augments-labs/sdlc-skills",
+    "quickstart": {
+      "label": "Install in Claude Code",
+      "code": "/plugin marketplace add augments-labs/sdlc-skills\n/plugin install sdlc-skills@augments-labs"
+    },
+    "highlights": [
+      "Phase-isolated skills covering the whole SDLC — planning through maintenance",
+      "Harness adapters for Claude Code, Codex and Kimi Code, each with session-start routing",
+      "Portable Markdown skills — adopt them in any harness that can invoke one"
+    ]
   }
 ]

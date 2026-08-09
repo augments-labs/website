@@ -7,17 +7,26 @@
     "dev": "next dev",
     "prebuild": "node scripts/sync-docs.mjs",
     "build": "next build",
+    "postbuild": "pagefind --site .next/server/app --output-path public/pagefind",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
+    "github-slugger": "^2.0.0",
     "next": "16.3.0",
+    "next-themes": "^0.4.6",
     "react": "19.2.8",
     "react-device-lab": "^1.1.2",
     "react-dom": "19.2.8",
     "react-markdown": "^10.1.0",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-pretty-code": "^0.14.5",
+    "rehype-slug": "^6.0.0",
     "remark-frontmatter": "^5.0.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "shiki": "^4.4.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -27,7 +36,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9.39.5",
     "eslint-config-next": "16.3.0",
+    "pagefind": "^1.5.2",
     "tailwindcss": "^4",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10"
   }
 }

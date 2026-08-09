@@ -32,7 +32,7 @@ export default async function DocsIndex() {
         {projects.map((project) => (
           <Link
             key={project.slug}
-            href={`/docs/${project.slug}`}
+            href={`/${project.slug}/docs`}
             className="flex items-center justify-between gap-4 rounded-xl border border-zinc-200 p-5 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:hover:border-zinc-600"
           >
             <div>

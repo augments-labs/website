@@ -24,74 +24,90 @@ const principles = [
   },
 ];
 
+function Wordmark() {
+  return (
+    <picture>
+      <source
+        media="(prefers-color-scheme: dark)"
+        srcSet="/augments-labs-logo-light.svg"
+      />
+      <img
+        src="/augments-labs-logo-dark.svg"
+        alt="Augments Labs"
+        className="h-16 w-auto sm:h-20"
+      />
+    </picture>
+  );
+}
+
 export default function Home() {
   return (
-    <div className="mx-auto w-full max-w-4xl px-6">
+    <div className="mx-auto w-full max-w-5xl px-6">
       <section className="py-20 sm:py-28">
-        <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
+        <Wordmark />
+        <h1 className="mt-8 max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
           Practical augments for human capability.
         </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-          An <strong className="font-semibold">augment</strong> is a tool that
-          extends a person&apos;s abilities. It does not replace the person,
-          make decisions on their behalf, or demand attention for its own sake —
-          it expands what they can do while leaving them firmly in command.
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
+          An <strong className="font-semibold text-foreground">augment</strong>{" "}
+          is a tool that extends a person&apos;s abilities. It does not replace
+          the person, make decisions on their behalf, or demand attention for
+          its own sake — it expands what they can do while leaving them firmly
+          in command.
         </p>
-        <p className="mt-4 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+        <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">
           Augments Labs is where we design and build those tools.
         </p>
+        <div className="mt-8">
+          <Link
+            href="#projects"
+            className="inline-block rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
+          >
+            View the projects
+          </Link>
+        </div>
       </section>
 
-      <section className="border-t border-zinc-200 py-16 dark:border-zinc-800">
+      <section id="projects" className="scroll-mt-20 border-t border-border py-16">
+        <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <Link
+              key={project.slug}
+              href={`/${project.slug}`}
+              className="group augment-corner-hover flex flex-col rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent"
+            >
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="font-semibold group-hover:text-accent">
+                  {project.name}
+                </h3>
+                <span className="rounded-full border border-border px-2 py-0.5 text-xs text-muted">
+                  {project.language}
+                </span>
+              </div>
+              <p className="mt-2 flex-1 text-sm leading-6 text-muted">
+                {project.tagline}
+              </p>
+              <span className="mt-4 text-sm font-medium text-accent">
+                Explore →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t border-border py-16">
         <h2 className="text-2xl font-semibold tracking-tight">What guides us</h2>
         <dl className="mt-8 grid gap-8 sm:grid-cols-2">
           {principles.map((principle) => (
-            <div key={principle.title}>
+            <div key={principle.title} className="border-l-2 border-accent/60 pl-4">
               <dt className="font-semibold">{principle.title}</dt>
-              <dd className="mt-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+              <dd className="mt-1 text-sm leading-6 text-muted">
                 {principle.body}
               </dd>
             </div>
           ))}
         </dl>
-      </section>
-
-      <section className="border-t border-zinc-200 py-16 dark:border-zinc-800">
-        <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <div
-              key={project.slug}
-              className="flex flex-col rounded-xl border border-zinc-200 p-5 dark:border-zinc-800"
-            >
-              <div className="flex items-center justify-between gap-2">
-                <h3 className="font-semibold">{project.name}</h3>
-                <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
-                  {project.language}
-                </span>
-              </div>
-              <p className="mt-2 flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                {project.tagline}
-              </p>
-              <div className="mt-4 flex gap-4 text-sm font-medium">
-                <Link
-                  href={`/docs/${project.slug}`}
-                  className="text-blue-600 hover:underline dark:text-blue-400"
-                >
-                  Docs
-                </Link>
-                <a
-                  href={project.repoUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-zinc-500 hover:underline"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
     </div>
   );
