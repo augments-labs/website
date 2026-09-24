@@ -18,7 +18,7 @@ describe("collapseSlugSegment", () => {
 
   it("leaves other paths untouched", () => {
     expect(
-      collapseSlugSegment(["a2a", "a2a"], "philharmonica-adk-python"),
+      collapseSlugSegment(["a2a", "a2a"], "augments-adk-python"),
     ).toEqual(["a2a", "a2a"]);
   });
 });

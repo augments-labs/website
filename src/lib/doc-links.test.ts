@@ -18,26 +18,26 @@ describe("resolveDocHref", () => {
 
   it("resolves ../ links against the file's directory", () => {
     expect(
-      resolveDocHref(["philharmonica-adk-python", "a2a"], "../guides/agents.md"),
-    ).toBe("/philharmonica-adk-python/docs/guides/agents");
+      resolveDocHref(["augments-adk-python", "a2a"], "../guides/agents.md"),
+    ).toBe("/augments-adk-python/docs/guides/agents");
   });
 
   it("maps index/readme targets to the directory route", () => {
     expect(
       resolveDocHref(
-        ["philharmonica-adk-python", "guides"],
+        ["augments-adk-python", "guides"],
         "../concepts/index.md",
       ),
-    ).toBe("/philharmonica-adk-python/docs/concepts");
+    ).toBe("/augments-adk-python/docs/concepts");
   });
 
   it("preserves anchors while stripping the .md extension", () => {
     expect(
       resolveDocHref(
-        ["philharmonica-adk-python", "guides"],
+        ["augments-adk-python", "guides"],
         "../a2a/a2a.md#production-warning",
       ),
-    ).toBe("/philharmonica-adk-python/docs/a2a/a2a#production-warning");
+    ).toBe("/augments-adk-python/docs/a2a/a2a#production-warning");
   });
 
   it("collapses the redundant <slug>/<slug> segment (repo docs folder named after the repo)", () => {
@@ -62,9 +62,9 @@ describe("resolveAssetSrc", () => {
   it("mirrors the repo docs layout under /synced without slug collapsing", () => {
     expect(
       resolveAssetSrc(
-        ["philharmonica-adk-python", "architecture"],
+        ["augments-adk-python", "architecture"],
         "../images/architecture/overview.svg",
       ),
-    ).toBe("/synced/philharmonica-adk-python/images/architecture/overview.svg");
+    ).toBe("/synced/augments-adk-python/images/architecture/overview.svg");
   });
 });
