@@ -15,7 +15,7 @@ export async function Markdown({
   content: string;
   /**
    * [slug, ...directory of the markdown file on disk, relative to docs/],
-   * e.g. ["philharmonica-adk-python", "a2a"] for docs/a2a/index.md.
+   * e.g. ["augments-adk-python", "a2a"] for docs/a2a/index.md.
    */
   baseSegments: string[];
 }) {

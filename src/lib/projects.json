@@ -17,14 +17,14 @@
     ]
   },
   {
-    "slug": "philharmonica-adk-python",
-    "name": "Philharmonica ADK",
+    "slug": "augments-adk-python",
+    "name": "Augments ADK",
     "tagline": "A framework to orchestrate a complex system of agents that performs real-world actions.",
     "language": "Python",
-    "repoUrl": "https://github.com/augments-labs/philharmonica-adk-python",
+    "repoUrl": "https://github.com/augments-labs/augments-adk-python",
     "quickstart": {
       "label": "Install with uv — or plain pip",
-      "code": "uv add philharmonica-adk  # or: pip install philharmonica-adk"
+      "code": "uv add augments-adk  # or: pip install augments-adk"
     },
     "highlights": [
       "Orchestrate complex systems of agents that perform real-world actions",
