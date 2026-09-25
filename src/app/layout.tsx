@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: {
     default: "Augments Labs",
-    template: "%s — Augments Labs",
+    template: "%s · Augments Labs",
   },
   description: "Practical augments for human capability.",
 };

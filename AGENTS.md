@@ -15,7 +15,7 @@ Static Next.js (App Router) + Tailwind v4 site, deployed on Vercel.
 - Commands: `npm run dev` (syncs docs first), `npm test` (vitest),
   `npm run lint`, `npm run build` (docs sync + next build + pagefind index).
 - Docs content is SYNCED from the project repos by `scripts/sync-docs.mjs`
-  into `content/` and `public/synced/` — never edit generated output; edit
+  into `content/` and `public/synced/`. Never edit generated output; edit
   the source repo's `docs/` folder instead.
 - Project card/welcome-page data: `src/lib/projects.json`.
 - Docs logic unit tests live next to it: `src/lib/*.test.ts` (vitest).

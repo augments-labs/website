@@ -8,7 +8,7 @@ export interface Crumb {
 
 /** Site-wide way back: a breadcrumb trail on every page except home, on
  *  every form factor (44px touch targets, wraps on narrow screens).
- *  Ignored by the search indexer — it's chrome, not content. */
+ *  Ignored by the search indexer: it's chrome, not content. */
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
     <nav aria-label="Breadcrumb" data-pagefind-ignore className="mb-6">

@@ -53,7 +53,7 @@ export function DocsShell({
   };
 
   // Item navigation: consume the drawer's pushed entry via back() first,
-  // then navigate — otherwise the target page would sit behind a dead
+  // then navigate. Otherwise the target page would sit behind a dead
   // drawer entry and native back would return to a closed-drawer state.
   const navigateFromDrawer = (href: string) => {
     if (pushedRef.current) {
@@ -66,7 +66,7 @@ export function DocsShell({
 
   // Native back while the drawer is open: pop the entry, stay on the page;
   // a pending item navigation runs after the pop.
-  // Scoped to [drawerOpen, router] — a dep-less effect would re-register the
+  // Scoped to [drawerOpen, router]: a dep-less effect would re-register the
   // listener on every render and lose the in-flight pop to the router's own
   // popstate handling (see DocsSearch for the same pattern).
   useEffect(() => {

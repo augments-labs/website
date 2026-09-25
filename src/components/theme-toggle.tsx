@@ -9,7 +9,7 @@ const getServerMounted = () => false;
 
 const ICONS = {
   dark: (
-    // half moon — right half filled
+    // half moon, right half filled
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-4 w-4" aria-hidden>
       <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z" strokeLinejoin="round" />
       <path d="M12 3a9 9 0 0 1 0 18V3Z" fill="currentColor" stroke="none" />

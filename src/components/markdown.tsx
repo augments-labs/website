@@ -57,7 +57,15 @@ export async function Markdown({
             // eslint-disable-next-line @next/next/no-img-element -- synced static assets
             return <img src={resolved} alt={alt ?? ""} />;
           },
-          pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
+          // Keep the <pre>: it preserves whitespace and carries the prose
+          // surface styles. When the fence names a language, rehype-pretty-code
+          // sets data-language / data-theme on it, so pass the props through.
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars -- `node` is the hast node, not a DOM attribute
+          pre: ({ node: _node, children, ...props }) => (
+            <CodeBlock>
+              <pre {...props}>{children}</pre>
+            </CodeBlock>
+          ),
         }}
       >
         {content}

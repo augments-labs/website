@@ -7,6 +7,7 @@ import { Markdown } from "@/components/markdown";
 import { PrevNext } from "@/components/prev-next";
 import { TableOfContents } from "@/components/toc";
 import {
+  docPageTitle,
   extractHeadings,
   flattenDocTree,
   getAllDocRoutes,
@@ -26,7 +27,7 @@ export async function generateStaticParams() {
     path: route.docPath.length > 0 ? route.docPath : undefined,
   }));
   // Every project gets an index route even when its docs/ has no README/index
-  // file — the page renders a generated listing there (dynamicParams = false,
+  // file: the page renders a generated listing there (dynamicParams = false,
   // so routes must be enumerated here to exist). Only slugs with an existing
   // file-backed index (path === undefined) count as covered.
   const withIndex = new Set(
@@ -51,8 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject(slug);
   if (!project) return {};
   const doc = await getDocContent(slug, docPath);
-  const title = doc ? `${doc.title} — ${project.name}` : project.name;
-  return { title, description: project.tagline };
+  return { title: docPageTitle(doc?.title, project.name), description: project.tagline };
 }
 
 function humanize(segment: string): string {
@@ -172,10 +172,10 @@ export default async function DocPage({ params }: Props) {
         <Breadcrumbs items={breadcrumbItems} />
         <article
           data-pagefind-body
-          data-pagefind-meta={`title:${doc.title} · ${project.name}`}
+          data-pagefind-meta={`title:${docPageTitle(doc.title, project.name)}`}
         >
           {/* Pagefind derives URLs from .html file paths, which Next serves
-              extensionless — override with the canonical route. */}
+              extensionless, so override with the canonical route. */}
           <span
             hidden
             data-pagefind-meta={`url:/${slug}/docs${docPath.length ? `/${docPath.join("/")}` : ""}`}

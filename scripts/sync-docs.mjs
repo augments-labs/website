@@ -7,8 +7,8 @@
  * Runs automatically before `next dev` and `next build` via npm pre-hooks,
  * both locally and on Vercel.
  *
- * The source of truth for documentation is each project's own GitHub repo —
- * never edit content/ or public/synced/ by hand; both are regenerated on
+ * The source of truth for documentation is each project's own GitHub repo.
+ * Never edit content/ or public/synced/ by hand; both are regenerated on
  * every run. Sync writes to temp dirs first and swaps on success, so a
  * failure (e.g. API rate limit) keeps the previous snapshot if one exists.
  *

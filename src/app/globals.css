@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* V1 "Instrument" — dark default, teal reserved for action/active/focus,
+/* V1 "Instrument": dark default, teal reserved for action/active/focus,
    hairline borders. Neutrals are zinc in both themes (light = zinc
    counterparts of dark); accent pair comes from the Augments Labs logo. */
 :root {
@@ -76,7 +76,7 @@ body {
   overflow-x: auto;
 }
 
-/* Docs prose — accent links, surfaced code blocks, quiet autolink headings */
+/* Docs prose: accent links, surfaced code blocks, quiet autolink headings */
 .prose a {
   color: var(--accent);
   text-decoration-color: color-mix(in oklab, var(--accent) 40%, transparent);

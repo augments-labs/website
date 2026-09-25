@@ -1,6 +1,6 @@
 /**
  * The Augments Labs wordmark, swapped by theme class (next-themes), not by
- * OS media query — so it follows the header toggle. The dark file is for
+ * OS media query, so it follows the header toggle. The dark file is for
  * light backgrounds, the light file for dark backgrounds.
  */
 /* eslint-disable @next/next/no-img-element -- static SVG logo pair switched via CSS classes */

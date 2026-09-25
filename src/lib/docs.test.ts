@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   childRoutes,
   collapseSlugSegment,
+  docPageTitle,
   extractHeadings,
   fileToSegments,
   flattenDocTree,
@@ -106,5 +107,21 @@ describe("childRoutes", () => {
     expect(childRoutes(routes, ["guides"])).toEqual([
       { slug: "p", docPath: ["guides", "agents"] },
     ]);
+  });
+});
+
+describe("docPageTitle", () => {
+  it("joins the doc title and project name", () => {
+    expect(docPageTitle("Getting started", "Augments ADK")).toBe(
+      "Getting started · Augments ADK",
+    );
+  });
+
+  it("does not repeat the project name when the doc title already is it", () => {
+    expect(docPageTitle("Augments ADK", "Augments ADK")).toBe("Augments ADK");
+  });
+
+  it("falls back to the project name when there is no doc", () => {
+    expect(docPageTitle(undefined, "Augments ADK")).toBe("Augments ADK");
   });
 });

@@ -30,8 +30,8 @@ export default async function DocsIndex() {
       />
       <h1 className="text-3xl font-semibold tracking-tight">Documentation</h1>
       <p className="mt-3 text-muted">
-        Every project documents itself in its own repository; those pages are
-        synced here at build time.
+        Each project keeps its docs in its own repository. They are synced
+        here at build time.
       </p>
       <div className="mt-10 grid gap-4">
         {projects.map((project) => (

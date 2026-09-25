@@ -39,7 +39,7 @@ async function loadPagefind(): Promise<PagefindApi | null> {
 
 /** Pagefind derives result URLs from .html file paths; Next serves routes
  *  extensionless. Pages declare their canonical route via
- *  data-pagefind-meta="url:…" — prefer it (same rule as Pagefind UI). */
+ *  data-pagefind-meta="url:…", so prefer it (same rule as Pagefind UI). */
 function resultHref(result: PagefindResult): string {
   return result.meta?.url ?? result.url;
 }
@@ -144,7 +144,7 @@ export function DocsSearch({ currentSlug }: { currentSlug: string }) {
 
   // Native back while the dialog is open: pop the entry, stay on the page.
   // A pending result navigation (set by goToResult) runs after the pop.
-  // Scoped to [open, router] — do NOT leave this dep-less: a no-deps effect
+  // Scoped to [open, router]. Do NOT leave this dep-less: a no-deps effect
   // re-registers the listener on every render, and the render triggered by
   // the router's own popstate handling detaches it before the in-flight pop
   // reaches it (the dialog then never closes on native back).
@@ -164,8 +164,8 @@ export function DocsSearch({ currentSlug }: { currentSlug: string }) {
     return () => window.removeEventListener("popstate", onPop);
   }, [open, router]);
 
-  // Result navigation: consume the pushed dialog entry via back() first —
-  // otherwise the result page would sit behind a dead dialog entry, and
+  // Result navigation: consume the pushed dialog entry via back() first.
+  // Otherwise the result page would sit behind a dead dialog entry, and
   // native back would return to a closed-dialog page state.
   const goToResult = (url: string) => {
     if (pushedRef.current) {
@@ -283,9 +283,9 @@ export function DocsSearch({ currentSlug }: { currentSlug: string }) {
                 <p className="px-4 py-6 text-sm text-muted">
                   Search index not found. Run{" "}
                   <code className="rounded bg-surface px-1">npm run build</code>{" "}
-                  once to generate it — then restart{" "}
-                  <code className="rounded bg-surface px-1">npm run dev</code>:
-                  a dev server started before the build does not see files
+                  once to generate it, then restart{" "}
+                  <code className="rounded bg-surface px-1">npm run dev</code>.
+                  A dev server started before the build does not see files
                   added to <code className="rounded bg-surface px-1">public/</code>{" "}
                   afterwards.
                 </p>

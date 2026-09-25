@@ -7,11 +7,11 @@ the augment corner from the logo.
 ## How it works
 
 - **Routes**
-  - `/` — lab homepage (thesis, principles, project cards).
-  - `/<slug>` — project welcome page (tagline, quickstart, highlights, CTAs).
-  - `/<slug>/docs` + `/<slug>/docs/<page...>` — per-project documentation with
+  - `/`: lab homepage (thesis, principles, project cards).
+  - `/<slug>`: project welcome page (tagline, quickstart, highlights, CTAs).
+  - `/<slug>/docs` + `/<slug>/docs/<page...>`: per-project documentation with
     sidebar, search (⌘K), right-rail TOC, prev/next, and "Edit this page".
-  - `/docs` — index of all project docs. `/device-preview` — react-device-lab.
+  - `/docs`: index of all project docs. `/device-preview`: react-device-lab.
   - Legacy `/docs/<slug>/...` 301-redirects to `/<slug>/docs/...`.
 - **Project data** lives in `src/lib/projects.json` (tagline, quickstart,
   highlights, repo URL). Adding a project = one JSON entry.
@@ -21,8 +21,8 @@ the augment corner from the logo.
   `next dev` and `next build` (npm pre-hooks, also on Vercel). `content/` and
   `public/synced/` are gitignored and regenerated every run. Sync swaps via a
   temp dir; on failure (e.g. rate limit) it falls back to the previous
-  snapshot. Set `GITHUB_TOKEN` to raise the API limit — recommended as a
-  Vercel env var.
+  snapshot. Set `GITHUB_TOKEN` to raise the API limit (recommended as a
+  Vercel env var).
 - **Markdown pipeline** (`src/components/markdown.tsx`): react-markdown
   `MarkdownAsync` + GFM + Shiki (rehype-pretty-code, dual light/dark) +
   heading ids/autolinks. Relative `.md` links and images are rewritten onto
@@ -48,7 +48,7 @@ npm run build      # sync + next build + pagefind index
 
 ## Deploy
 
-Import the repo into Vercel — build command is the standard `npm run build`
+Import the repo into Vercel. The build command is the standard `npm run build`
 (prebuild sync and postbuild Pagefind run automatically). Add `GITHUB_TOKEN`
 in the project env vars, and attach `augmentslabs.com` in the domain
 settings.

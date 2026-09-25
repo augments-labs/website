@@ -4,23 +4,23 @@ import { projects } from "@/lib/projects";
 const principles = [
   {
     title: "Human authority",
-    body: "People remain responsible for consequential decisions. Our tools make actions clearer and more deliberate, never less visible.",
+    body: "People stay responsible for the decisions that matter. Our tools make each action clearer and more deliberate, and they never hide what they do.",
   },
   {
     title: "Understandable behavior",
-    body: "You should be able to inspect what a tool is doing, understand why it behaves that way, and intervene when necessary.",
+    body: "You can see what a tool is doing and why, and step in whenever you need to.",
   },
   {
     title: "Meaningful choice",
-    body: "Durable software avoids needless lock-in and leaves room to choose the systems and services you trust.",
+    body: "Durable software avoids needless lock-in. You pick the systems and services you trust.",
   },
   {
     title: "Local ownership",
-    body: "Your work and data belong to you. Privacy and control are design constraints, not features added at the end.",
+    body: "Your work and your data belong to you. We treat privacy and control as design constraints from the start.",
   },
   {
     title: "Measured usefulness",
-    body: "Reliability, performance, and concrete outcomes matter more than impressive demonstrations or ambitious claims.",
+    body: "Reliability, performance and concrete results count for more than impressive demos or big claims.",
   },
 ];
 
@@ -33,13 +33,15 @@ export default function Home() {
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
           An <strong className="font-semibold text-foreground">augment</strong>{" "}
-          is a tool that extends a person&apos;s abilities. It does not replace
-          the person, make decisions on their behalf, or demand attention for
-          its own sake — it expands what they can do while leaving them firmly
-          in command.
+          is a tool that extends what a person can do. It does not replace
+          the person or decide for them, and it will not demand their
+          attention. The person stays in command.
         </p>
         <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">
-          Augments Labs is where we design and build those tools.
+          Augments Labs is where we build them: a coding agent for the
+          terminal, a framework for systems of agents that act in the real
+          world, and a set of skills that hold autonomous agents to real
+          engineering standards.
         </p>
       </section>
 

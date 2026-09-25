@@ -11,7 +11,7 @@ export interface Project {
   repoUrl: string;
   /** Install/build snippet for the welcome page. */
   quickstart: { label: string; code: string };
-  /** 3–5 bullets for the welcome page. */
+  /** 3 to 5 bullets for the welcome page. */
   highlights: string[];
 }
 

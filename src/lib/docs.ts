@@ -243,6 +243,16 @@ export function flattenDocTree(
   return out;
 }
 
+/** Browser-tab title for a doc page. The project name is skipped when the
+ *  doc already carries it (a README whose H1 is the project name). */
+export function docPageTitle(
+  docTitle: string | undefined,
+  projectName: string,
+): string {
+  if (!docTitle || docTitle === projectName) return projectName;
+  return `${docTitle} · ${projectName}`;
+}
+
 // ---------------------------------------------------------------------------
 // Headings (for the "On this page" rail). IDs match rehype-slug exactly:
 // both use github-slugger on the heading's plain text.

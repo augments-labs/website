@@ -6,13 +6,13 @@
     "language": "Rust",
     "repoUrl": "https://github.com/augments-labs/crucible-code",
     "quickstart": {
-      "label": "Build from source — Linux x86-64, glibc 2.34+",
+      "label": "Build from source (Linux x86-64, glibc 2.34 or newer)",
       "code": "git clone https://github.com/augments-labs/crucible-code\ncd crucible-code\ncargo build --release\n./target/release/crucible --version"
     },
     "highlights": [
       "A terminal coding agent: it reads, searches, edits and runs things in the directory you start it in",
       "Asks before anything that changes a file or starts a process",
-      "A single dynamically-linked binary — no runtime, no certificate bundle, nothing else to install",
+      "One dynamically linked binary. No runtime, no certificate bundle, nothing else to install",
       "Provider keys are read from the environment and never stored"
     ]
   },
@@ -23,7 +23,7 @@
     "language": "Python",
     "repoUrl": "https://github.com/augments-labs/augments-adk-python",
     "quickstart": {
-      "label": "Install with uv — or plain pip",
+      "label": "Install with uv, or with plain pip",
       "code": "uv add augments-adk  # or: pip install augments-adk"
     },
     "highlights": [
@@ -44,9 +44,9 @@
       "code": "/plugin marketplace add augments-labs/sdlc-skills\n/plugin install sdlc-skills@augments-labs"
     },
     "highlights": [
-      "Phase-isolated skills covering the whole SDLC — planning through maintenance",
+      "Phase-isolated skills that cover the whole SDLC, from planning through maintenance",
       "Harness adapters for Claude Code, Codex and Kimi Code, each with session-start routing",
-      "Portable Markdown skills — adopt them in any harness that can invoke one"
+      "Portable Markdown skills you can adopt in any harness that can invoke one"
     ]
   }
 ]
